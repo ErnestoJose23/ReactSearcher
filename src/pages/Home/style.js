@@ -9,13 +9,14 @@ const centeredStyoleObject = {
 
 export default makeStyles({
   container: {
-    height: "90vh",
+    height: "100vh",
     flexDirection: "column",
     ...centeredStyoleObject
   },
   cardContainer: {
     flexDirection: "column",
     width: 800,
+    opacity: 0.95,
     height: 400,
     padding: "2rem",
     ...centeredStyoleObject

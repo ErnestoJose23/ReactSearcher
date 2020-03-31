@@ -11,7 +11,7 @@ import {
 import { MovieIcon } from "../../icons";
 import styles from "./style";
 
-export default () => {
+export default ({ history }) => {
   const [searchText, setSearchText] = useState("");
   const classes = styles();
 
@@ -20,10 +20,10 @@ export default () => {
   };
 
   const handleCleanTextClick = event => {
-    console.log(2);
+    setSearchText('');
   };
   const handleSearchTextClick = event => {
-    console.log(3);
+    history.push(`/results?movieName=${searchText}`)
   };
 
   return (

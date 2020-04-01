@@ -1,19 +1,21 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Container } from '@material-ui/core'
+import { Container, CircularProgress } from '@material-ui/core'
 import queryString from 'query-string';
 
 
 import { searchMovie } from '../../redux/actions/search';
 import { movieResults, isSearchLoading } from '../../redux/selectors';
+import MovieResult from '../../components/MovieResult';
 
-import styles from "../Home/style";
+import styles from "./style";
 
 export default ({ location }) => {
     const classes = styles();
 
     const dispatch = useDispatch();
     const movies = useSelector(state => movieResults(state));
+    const isLoading = useSelector(state => isSearchLoading(state));
 
     useEffect(() => {
         const { movieName } = queryString.parse(location.search);
@@ -21,7 +23,18 @@ export default ({ location }) => {
             dispatch(searchMovie({ movieName }));
         }
     });
+
+    const renderMovies = () => {
+        if (movies) {
+            console.log(movies);
+            return movies.map((value, index) => <MovieResult key={index}{...value} />);
+        } else if (isLoading) {
+            return <CircularProgress size={100} color="primary"></CircularProgress>
+        }
+        return <div />;
+    };
+
     return (
-        <Container className={classes.container}>Results</Container>
+        <Container className={classes.container}>{renderMovies()}</Container>
     )
 }

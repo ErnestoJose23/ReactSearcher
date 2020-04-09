@@ -24,5 +24,11 @@ export default makeStyles({
     gridInfo: {
         paddingTop: 10,
         paddingLeft: 20
+    },
+    progress: {
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        paddingTop: "200px"
     }
 });

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Container, CircularProgress } from '@material-ui/core'
+import { Container, CircularProgress, Grid } from '@material-ui/core'
 import queryString from 'query-string';
 
 
@@ -30,7 +30,7 @@ export default ({ location }) => {
         if (movies) {
             return movies.map((value, index) => <MovieResult key={index}{...value} />);
         } else if (isLoading) {
-            return <CircularProgress size={100} color="primary"></CircularProgress>
+            return <div className={classes.progress}><CircularProgress size={100} color="primary" ></CircularProgress></div>
         }
         return <div />;
     };

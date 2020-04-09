@@ -24,7 +24,7 @@ export default ({ match }) => {
 
 
     if (!movieResult) {
-        return <CircularProgress size={50} color="primary" />
+        return <div className={classes.progress}><CircularProgress size={50} color="primary" /></div>
     } else {
         if (movieResult.Poster == "N/A") {
             movieResult.Poster = 'https://www.reelviews.net/resources/img/default_poster.jpg';

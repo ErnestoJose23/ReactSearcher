@@ -12,7 +12,6 @@ export default ({ match }) => {
     const dispatch = useDispatch();
     const movieResult = useSelector(state => movieResultSelector(state));
 
-    console.log(movieResult);
     useEffect(() => {
         const movieId = match.params.id;
         if (!movieResult || movieResult && movieResult.imdbID != movieId) {
